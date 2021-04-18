@@ -33,22 +33,33 @@
         <link rel="stylesheet" href="assets/css/color/purple-color.css" id="option-color">
         <!--  Custom Style CSS  -->
         <link rel="stylesheet" href="assets/css/main.css">
-
+         <!--  Get In Touch -->
         <script
             src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
         <script>
             function subForm (){
+                $('#overlayerloader').show();
                 $.ajax({
                     url:'https://api.apispreadsheets.com/data/11073/',
                     type:'post',
                     data:$("#myForm").serializeArray(),
                     success: function(){
-                    alert("Form Data Submitted :)")
+                        alert("Form Data Submitted :)")
+                        $('#overlayerloader').hide();
+                        $('#name').val('');
+                        $('#email').val('');
+                        $('#subject').val('');
+                        $('#comments').val('');
                     },
                     error: function(){
-                    alert("There was an error :(")
+                        alert("There was an error :(")
+                        $('#overlayerloader').hide();
+                        $('#name').val('');
+                        $('#email').val('');
+                        $('#subject').val('');
+                        $('#comments').val('');
                     }
                 });
             }
@@ -58,7 +69,7 @@
 
     <!--  Pre Loader  -->
     <div id="overlayer"></div>
-    <span class="loader"></span>
+    <span id="overlayerloader" class="loader"></span>
 
     <!-- Portfolio Single Modal Start -->
     <div class="portfolio-single modal fade" id="portfolio-single" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
