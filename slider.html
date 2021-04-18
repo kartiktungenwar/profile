@@ -33,6 +33,26 @@
         <link rel="stylesheet" href="assets/css/color/purple-color.css" id="option-color">
         <!--  Custom Style CSS  -->
         <link rel="stylesheet" href="assets/css/main.css">
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <script>
+            function subForm (){
+                $.ajax({
+                    url:'https://api.apispreadsheets.com/data/11073/',
+                    type:'post',
+                    data:$("#myForm").serializeArray(),
+                    success: function(){
+                    alert("Form Data Submitted :)")
+                    },
+                    error: function(){
+                    alert("There was an error :(")
+                    }
+                });
+            }
+        </script>
     </head>
     <body data-spy="scroll" data-target="#scrollspy" data-offset="1" class="flat-demo">
 
@@ -709,7 +729,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 mt-5 contact-form">
-                                <form id="contactForm">
+                                <form id="myForm">
                                     <div class="row">
                                         <div class="col-lg-6 form-item">
                                             <div class="form-group">
@@ -733,7 +753,7 @@
                                         </div>
                                         <div class="col-sm-12 mt-4 text-left">
                                             <div class="button-border">
-                                                <a href="javascript:void(0)" class="pill-button" id="submit-btn" onclick="sendEmail()">Send Message</a>
+                                                <a href="javascript:void(0)" class="pill-button" id="submit-btn" onclick="subForm()">Send Message</a>
                                             </div>
                                             <div id="message" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000" >
                                                 <div class="toast-body d-inline-block"></div>
